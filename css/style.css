@@ -33,6 +33,7 @@ h3 {
 	width: 100vw;
 	/*padding: 0 10vw 0 10vw; */
 }
+
 .clear { 
 	clear: both; 
 }
@@ -55,6 +56,15 @@ h3 {
 	padding-top: 40vh;
 	width: 50%;
   	margin: 0 auto;
+}
+
+#scroll_prompt{
+	position:absolute;
+	left: 50vw;
+	top: 90vh;
+	
+	width:40px;
+	height:40px;
 }
 
 /*-----------------------*/
@@ -128,7 +138,6 @@ h3 {
 
 
 .description{
-	/*display:inline-block;*/
 	float: right;
 	width: 30vw;
 	height: 25vw;
@@ -137,24 +146,51 @@ h3 {
 }
 
 #veggeebutt{
-	background: url('../img/mrdc.jpg');
-	background-size: 100% 100%;
+    position: relative;
 }
 
 #fightybox{
-	background: url('../img/fightybox.jpg');
-	background-size: 100% 100%;
+/*	background: url('../img/fightybox.jpg');
+	background-size: 100% 100%;*/
+	position: relative;
 }
 
-#veggiebot2017{
-	background: url('../img/mrdc.jpg');
-	background-size: 100% 100%;
+#mrdc{
+/*	background: url('../img/mrdc.jpg');
+	background-size: 100% 100%;*/
+	position: relative;
+}
+
+.playBtn {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top:8vw;
+	left:14vw;
+}
+
+.picture_video{
+	position:absolute;
+	width: 38vw;
+	height: 25vw;
+	top:0;
+	left:0;
+	border-radius: 25px;
+	float:left;
+	opacity: 0.5;
+}
+
+.picture_video:hover{
+	opacity: 1;
 }
 
 .picture{
+	position:absolute;
 	width: 38vw;
 	height: 25vw;
-	/*display: inline-block;*/
+	top:0;
+	left:0;
+	border-radius: 25px;
 	float:left;
 }
 

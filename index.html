@@ -15,16 +15,23 @@
  <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
  <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="js/mootools.js"></script>
+<script type="text/javascript" src="js/swfobject.js"></script>
+<script type="text/javascript" src="js/videobox.js"></script>
+<link rel="stylesheet" href="css/videobox.css" type="text/css" media="screen" />
+
  <script>
  </script>
 </head>
 
 <!----- SLIDES START ---> 
-<div id="slide1">
+<div id="slide1" data-aos="fade-down" data-aos-offset="500" data-aos-delay="100" data-aos-duration="2000">
 		<div id="intro" div data-aos="zoom-in">
 			<h2>Hello! I'm Sean</h2>
 		</div>
 		<div id="divider"> </div>
+		<img src="img/scroll-arrow.svg" alt="scroll" id=scroll_prompt>
 </div> 
 
 <!----- ABOUT SLIDE ---> 
@@ -48,30 +55,46 @@
 
 		<div class="project_container">
 			<div class="project" data-aos="fade-up" data-aos-once="true">
-				<div id="veggeebutt" class="picture"></div>
+				<div id="veggeebutt">
+					<a href="https://www.youtube.com/watch?v=KQNVduuj5ng" rel="vidbox 800 500" title="Northwestern Design Competition 2018">
+						<img src="img/veggeebutt.jpg" alt="veggeebutt" class="picture_video">
+						<img src="img/play_button.png" alt="play" class="playBtn">
+					</a>
+
+				</div>
 				<div class="description">
-					<p class="project_title">VeggeeButt</p>
+					<p class="project_title">VeggieButt</p>
 					<p class="event">Design Competition 2018</p>
 					<p class="text">This autonomous robot detected retroreflective blocks, captured the block, identified the shape, and placed it in the respective scoring bin. 
 				</div>
 			</div>
 
 			<div class="project" data-aos="fade-up" data-aos-once="true">
-				<div id="fightybox" class="picture"></div>
+				<div id="fightybox">
+					<a href="https://www.youtube.com/watch?v=nnzYZdGFzzM" rel="vidbox 800 500" title="caption">
+						<img src="img/fightybox.jpg" alt="fightybox" class="picture">
+					</a>
+				</div>
 				<div class="description">
 					<p class="project_title">FightyBox</p>
 					<p class="event">RoboBrawl 2018</p>
-					<p class="text">This autonomous robot detected retroreflective blocks, captured the block, identified the shape, and placed it in the respective scoring bin. 
+					<p class="text">Combat Robot
 				</div>
 			</div>
 
 			<div class="project" data-aos="fade-up" data-aos-once="true">
-				<div id="veggiebot2017" class="picture"></div>
+				<div id="mrdc">
+					<a href="https://www.youtube.com/watch?v=nnzYZdGFzzM" rel="vidbox 800 500" title="caption">
+						<img src="img/mrdc.jpg" alt="MRDC" class="picture">
+					</a>
+				</div>
 				<div class="description">
-					<h2>VeggeeButt</h2>
-					<p>aoetud',c.guaonusatu</p>
+					<p class="project_title">MRDC</p>
+					<p class="event">Midwestern Robotics Design Competition 2018</p>
+					<p class="text">Remote controlled robot that captures soccer balls 
 				</div>
 			</div>
+
 		</div>
 
 
