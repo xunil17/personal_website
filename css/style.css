@@ -1,0 +1,167 @@
+body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+h1 {
+	font-family:"Arvo";
+	font-weight:normal;
+	font-size: 10vh;
+	text-align: center;
+	color: #fff;
+	margin: 0;
+	padding: 0;
+}
+h2 {
+	font-family:"Arvo";
+	font-weight: normal;
+	font-size: 5vh;
+	text-align: center;
+	color: black;
+	margin: 0;
+	padding: 0;
+}
+h3 {
+	font-family: Oswald;
+	font-weight: normal;
+	font-size: 3vh;
+	text-align: center;
+}
+
+.content{ 
+	/*margin: 0 auto; */
+	width: 100vw;
+	/*padding: 0 10vw 0 10vw; */
+}
+.clear { 
+	clear: both; 
+}
+
+#divider { background: url('../img/divider.png')no-repeat; width: 300px; height: 35px; margin: 0px auto 27px auto; }
+#ribbon { background: url('../img/ribbon.png')no-repeat; width: 251px; height: 48px; margin: 0 auto; display: block; position: relative; top: -38px; }
+
+#slide1, #slide2{ width: 100%; }
+
+#slide1{
+	background:url('../img/robot.png') 50% 0 no-repeat fixed;
+	color: #fff;
+	height: 100vh;
+	margin: 0;
+	background-size: cover;
+	position: relative;
+}
+
+#intro {
+	padding-top: 40vh;
+	width: 50%;
+  	margin: 0 auto;
+}
+
+/*-----------------------*/
+
+#slide2{
+	background-color: #eee;
+	color: #333333;
+	max-height: 100vh;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 15vh 0 7.5vh
+}
+
+.title {
+	text-align: center;
+	color: black;
+}
+
+.title_container {
+	/*display: inline-block;*/
+	padding-bottom: 5vh;
+	/*vertical-align: center;*/
+}
+
+.about {
+	font-family: 'Goudy Bookletter 1911', serif;
+	font-weight: normal;
+	text-align: left;
+	margin: 0 0;
+
+}
+
+.about_container {
+	padding-left: 15vw;
+	padding-right: 15vw;
+}
+
+/*-----------------------*/
+
+#slide3{
+	background-color: white;
+	color: #333333;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 15vh 0 7.5vh;
+	/*padding: 0 10vw 0 10vw; */
+}
+
+.project_container{
+/*	padding-left: 15vw;
+	padding-right: 15vw;*/
+	text-align: center;
+	margin:0 auto;
+	width: 75vw;
+}
+
+.project{
+	height: 25vw;
+	display: block;
+	margin-bottom: 5vh;
+
+/*top right bottom left*/
+}
+
+.project_title{
+	font-size: 5vh;
+	text-align: left;
+	margin: 0 0;
+
+}
+
+
+.description{
+	/*display:inline-block;*/
+	float: right;
+	width: 30vw;
+	height: 25vw;
+	padding-left: 3vw;
+	text-align: left;
+}
+
+#veggeebutt{
+	background: url('../img/mrdc.jpg');
+	background-size: 100% 100%;
+}
+
+#fightybox{
+	background: url('../img/fightybox.jpg');
+	background-size: 100% 100%;
+}
+
+#veggiebot2017{
+	background: url('../img/mrdc.jpg');
+	background-size: 100% 100%;
+}
+
+.picture{
+	width: 38vw;
+	height: 25vw;
+	/*display: inline-block;*/
+	float:left;
+}
+
+.text{
+	font-size: 2vh;
+}
+
+.event{
+	font-size: 2vh;
+}
