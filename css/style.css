@@ -28,6 +28,11 @@ h3 {
 	text-align: center;
 }
 
+p {
+	font-family: 'Goudy Bookletter 1911', serif;
+	font-size: 10vh;
+}
+
 .content{ 
 	width: 100vw;
 }
@@ -125,6 +130,7 @@ h3 {
 
 .project_title{
 	font-size: 5vh;
+	font-family:"Arvo";
 	text-align: left;
 	margin: 0 0;
 
@@ -189,9 +195,115 @@ h3 {
 }
 
 .text{
-	font-size: 2vh;
+	font-size: 2.5vh;
 }
 
 .event{
-	font-size: 2vh;
+	font-size: 2.7vh;
+}
+
+@media only screen and (min-width: 1301px) and (max-width: 1700px) {
+	.project_container{
+		padding-left: 2vw;
+		padding-right: 2vw;
+		text-align: center;
+		margin:0 auto;
+		width: auto;
+	}
+
+	.description{
+		float: right;
+		width: 50vw;
+		height: 25vw;
+		padding-left: 3vw;
+		text-align: left;
+	}
+
+
+}
+
+@media only screen and (max-width: 1300px) {
+    /* For mobile phones: */
+
+    .project {
+    	display: block;
+    	height: 100vh;
+    	margin-bottom: 1vh;
+    }
+
+    .image_video {
+    	/*display: block;*/
+    	height: 45vh;
+    }
+
+    .project_container {
+    	display: block;
+    	float: none;
+    }
+
+    .picture {
+        width: 80vw;
+        height: auto;
+        display:block;
+        float: none;
+    }
+
+    .picture_video {
+    	width: 80vw;
+    	height: auto;
+/*    	display: block;
+    	float: none;*/
+    }
+
+    .description {
+    	width: 80vw;
+    	height: auto;
+    	display: block;
+    	float: none;
+    	margin-bottom: 2vh;
+    }
+
+    .playBtn {
+	    position: absolute;
+		width: 17vw;
+		height: 17vw;
+		top:22vw;
+		left:32vw;
+    }
+
+}
+
+/*-----------------------*/
+
+#slide4{
+	background-color: #eee;
+	color: #333333;
+	max-height: 100vh;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 5vh 0 7.5vh
+}
+
+#buttons {
+  display: table;
+  width: 45%;
+  margin: 3vh auto;
+}
+
+#buttons a {
+  display: table-cell;
+  text-align: center;
+  margin: 0 3vw;
+  width: 10%;
+}
+
+#buttons i {
+  width: 100%;
+  max-width: 150px;
+  filter: grayscale(100%);
+}
+
+#razyrice {
+	text-align: center;
+	margin-top: 4vh;
 }
