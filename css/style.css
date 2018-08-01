@@ -29,17 +29,11 @@ h3 {
 }
 
 .content{ 
-	/*margin: 0 auto; */
 	width: 100vw;
-	/*padding: 0 10vw 0 10vw; */
 }
 
-.clear { 
-	clear: both; 
-}
-
-#divider { background: url('../img/divider.png')no-repeat; width: 300px; height: 35px; margin: 0px auto 27px auto; }
-#ribbon { background: url('../img/ribbon.png')no-repeat; width: 251px; height: 48px; margin: 0 auto; display: block; position: relative; top: -38px; }
+/*#divider { background: url('../img/divider.png')no-repeat; width: 300px; height: 35px; margin: 0px auto 27px auto; }
+#ribbon { background: url('../img/ribbon.png')no-repeat; width: 251px; height: 48px; margin: 0 auto; display: block; position: relative; top: -38px; }*/
 
 #slide1, #slide2{ width: 100%; }
 
