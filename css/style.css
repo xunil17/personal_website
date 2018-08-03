@@ -147,22 +147,6 @@ p {
 	text-align: left;
 }
 
-#veggeebutt{
-    position: relative;
-}
-
-#fightybox{
-/*	background: url('../img/fightybox.jpg');
-	background-size: 100% 100%;*/
-	position: relative;
-}
-
-#mrdc{
-/*	background: url('../img/mrdc.jpg');
-	background-size: 100% 100%;*/
-	position: relative;
-}
-
 .playBtn {
 	position: absolute;
 	width: 10vw;
@@ -172,22 +156,22 @@ p {
 }
 
 .picture_video{
-	position:absolute;
+	position: relative;
 	width: 38vw;
 	height: 25vw;
 	top:0;
 	left:0;
 	border-radius: 25px;
 	float:left;
-	opacity: 0.5;
+	/*opacity: 0.5;*/
 }
 
-.picture_video:hover{
+/*.picture_video:hover{
 	opacity: 1;
-}
+}*/
 
 .picture{
-	position:absolute;
+	position: relative;
 	width: 38vw;
 	height: 25vw;
 	top:0;
@@ -227,37 +211,45 @@ p {
 @media only screen and (max-width: 1300px) {
     /* For mobile phones: */
 
-    .project {
-    	display: block;
-    	height: 100vh;
-    	margin-bottom: 1vh;
-    }
-
-    .image_video {
-    	/*display: block;*/
-    	height: 45vh;
-    }
 
     .project_container {
     	display: block;
     	float: none;
     }
 
-    .picture {
-        width: 80vw;
-        height: auto;
-        display:block;
-        float: none;
+    .project {
+    	display: flex;
+    	flex-direction: column;
+    	height: auto;
+    	margin-bottom: 1vh;
+    }
+
+    .image_video_container {
+    	flex: 1;
+    	width:80vw;
+    	height: auto;
     }
 
     .picture_video {
-    	width: 80vw;
+    	position: relative;
+    	max-width: 100%;
+    	max-height: 100%;
+    	width: auto;
     	height: auto;
-/*    	display: block;
-    	float: none;*/
     }
 
+    .picture {
+        position: relative;
+    	max-width: 100%;
+    	max-height: 100%;
+    	width: auto;
+    	height: auto;
+    }
+
+
+
     .description {
+    	flex: 1;
     	width: 80vw;
     	height: auto;
     	display: block;
