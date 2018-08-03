@@ -60,10 +60,8 @@ p {
 #scroll_prompt{
 	position: absolute;
 	left: 50%;
-	/* bring your own prefixes */
-	transform: translate(-50%, -50%);
 	top: 90vh;
-	
+	transform: translate(-50%, -50%);
 	width:40px;
 	height:40px;
 }
@@ -138,42 +136,37 @@ p {
 
 }
 
+.image_video_container {
+	position: absolute;
+	flex: 1;
+	/*width:80vw;*/
+	/*height: auto;*/
+}
 
 .description{
 	float: right;
 	width: 30vw;
 	height: 25vw;
-	padding-left: 3vw;
+	/*padding-left: 3vw;*/
+	padding-right: 3vw;
 	text-align: left;
 }
 
 .playBtn {
 	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	width: 10vw;
 	height: 10vw;
-	top:8vw;
-	left:14vw;
+	cursor:pointer
 }
 
+.picture,
 .picture_video{
 	position: relative;
 	width: 38vw;
-	height: 25vw;
-	top:0;
-	left:0;
-	border-radius: 25px;
-	float:left;
-	/*opacity: 0.5;*/
-}
-
-/*.picture_video:hover{
-	opacity: 1;
-}*/
-
-.picture{
-	position: relative;
-	width: 38vw;
-	height: 25vw;
+	height: 23vw;
 	top:0;
 	left:0;
 	border-radius: 25px;
@@ -221,31 +214,25 @@ p {
     	display: flex;
     	flex-direction: column;
     	height: auto;
-    	margin-bottom: 1vh;
+    	margin-bottom: 5vh;
     }
 
     .image_video_container {
+    	position: relative;
     	flex: 1;
     	width:80vw;
     	height: auto;
     }
 
+    .picture, 
     .picture_video {
     	position: relative;
     	max-width: 100%;
     	max-height: 100%;
-    	width: auto;
-    	height: auto;
+    	width: 80vw;
+    	height: 45vw;
+    	margin-bottom: 3vh;
     }
-
-    .picture {
-        position: relative;
-    	max-width: 100%;
-    	max-height: 100%;
-    	width: auto;
-    	height: auto;
-    }
-
 
 
     .description {
@@ -255,14 +242,6 @@ p {
     	display: block;
     	float: none;
     	margin-bottom: 2vh;
-    }
-
-    .playBtn {
-	    position: absolute;
-		width: 17vw;
-		height: 17vw;
-		top:22vw;
-		left:32vw;
     }
 
 }

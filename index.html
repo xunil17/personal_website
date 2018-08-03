@@ -61,8 +61,16 @@
 			<div class="project" data-aos="fade-up" data-aos-once="true">
 				<div id="veggeebutt" class="image_video_container">
 					<!-- <a href="https://www.youtube.com/watch?v=9SHy4BM4vUQ" rel="vidbox 800 500" title="Northwestern Design Competition 2018"> -->
-						<img src="img/veggeebutt.JPG" alt="veggeebutt" class="picture_video">
-						<!-- <img src="img/play_button.png" alt="play" class="playBtn"> -->
+						<!-- <img src="img/veggeebutt.JPG" alt="veggeebutt" class="picture_video"> -->
+						<div onclick="thevid1=document.getElementById('thevideo1'); thevid1.style.display='block'; this.style.display='none'">
+							<img class="picture_video" src="img/veggeebutt.JPG" style="cursor:pointer" />
+							<img src="img/play_button.png" alt="play" class="playBtn">
+						</div>
+						<div id="thevideo1" style="display:none">
+							<iframe class="picture_video" src="https://www.youtube.com/embed/9SHy4BM4vUQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						</div>
+						
+						<!--  -->
 					<!-- </a> -->
 
 				</div>
@@ -74,12 +82,17 @@
 			</div>
 
 			<div class="project" data-aos="fade-up" data-aos-once="true">
-				<div id="fightybox" class="image_video">
-					<a href="https://www.youtube.com/watch?v=SEPgOIMzorE" rel="vidbox 800 500" title="caption">
-						<img src="img/fightybox.jpg" alt="fightybox" class="picture">
-						<!-- <img src="img/play_button.png" alt="play" class="playBtn"> -->
-					</a>
+
+				<div id="fightybox" class="image_video_container">
+					<div onclick="thevid2=document.getElementById('thevideo2'); thevid2.style.display='block'; this.style.display='none'">
+						<img class="picture_video" src="img/fightybox.jpg" style="cursor:pointer" />
+						<img src="img/play_button.png" alt="play" class="playBtn">
+					</div>
+					<div id="thevideo2" style="display:none">
+						<iframe class="picture_video" src="https://www.youtube.com/embed/SEPgOIMzorE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					</div>
 				</div>
+
 				<div class="description">
 					<p class="project_title">FightyBox</p>
 					<p class="event">RoboBrawl 2018</p>
