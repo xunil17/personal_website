@@ -81,7 +81,7 @@ var Videobox = {
 			var hRef = sLinkHref;
 			var videoId = hRef.split('=');
 			this.videoID = videoId[1];
-			this.so = new SWFObject("http://www.youtube.com/v/"+this.videoID, "flvvideo", this.options.contentsWidth, this.options.contentsHeight, "0");
+			this.so = new SWFObject("https://www.youtube.com/v/"+this.videoID, "flvvideo", this.options.contentsWidth, this.options.contentsHeight, "0");
 			this.so.addParam("wmode", "transparent");
 		}
 		else if (sLinkHref.match(/metacafe\.com\/watch/i)) {
@@ -89,7 +89,7 @@ var Videobox = {
 			var hRef = sLinkHref;
 			var videoId = hRef.split('/');
 			this.videoID = videoId[4];
-			this.so = new SWFObject("http://www.metacafe.com/fplayer/"+this.videoID+"/.swf", "flvvideo", this.options.contentsWidth, this.options.contentsHeight, "0");
+			this.so = new SWFObject("https://www.metacafe.com/fplayer/"+this.videoID+"/.swf", "flvvideo", this.options.contentsWidth, this.options.contentsHeight, "0");
 			this.so.addParam("wmode", "transparent");
 		}
 		else if (sLinkHref.match(/google\.com\/videoplay/i)) {
@@ -97,7 +97,7 @@ var Videobox = {
 			var hRef = sLinkHref;
 			var videoId = hRef.split('=');
 			this.videoID = videoId[1];
-			this.so = new SWFObject("http://video.google.com/googleplayer.swf?docId="+this.videoID+"&hl=en", "flvvideo", this.options.contentsWidth, this.options.contentsHeight, "0");
+			this.so = new SWFObject("https://video.google.com/googleplayer.swf?docId="+this.videoID+"&hl=en", "flvvideo", this.options.contentsWidth, this.options.contentsHeight, "0");
 			this.so.addParam("wmode", "transparent");
 		}
 		else if (sLinkHref.match(/ifilm\.com\/video/i)) {
@@ -105,16 +105,16 @@ var Videobox = {
 			var hRef = sLinkHref;
 			var videoId = hRef.split('video/');
 			this.videoID = videoId[1];
-			this.so = new SWFObject("http://www.ifilm.com/efp", "flvvideo", this.options.contentsWidth, this.options.contentsHeight, "0", "#000");
+			this.so = new SWFObject("https://www.ifilm.com/efp", "flvvideo", this.options.contentsWidth, this.options.contentsHeight, "0", "#000");
 			this.so.addVariable("flvbaseclip", this.videoID+"&");
 			this.so.addParam("wmode", "transparent");
 		}
 		else if (sLinkHref.match(/\.mov/i)) {
 		  this.flash = false;
 			if (navigator.plugins && navigator.plugins.length) {
-          this.other ='<object id="qtboxMovie" type="video/quicktime" codebase="http://www.apple.com/qtactivex/qtplugin.cab" data="'+sLinkHref+'" width="'+this.options.contentsWidth+'" height="'+this.options.contentsHeight+'"><param name="src" value="'+sLinkHref+'" /><param name="scale" value="aspect" /><param name="controller" value="true" /><param name="autoplay" value="true" /><param name="bgcolor" value="#000000" /><param name="enablejavascript" value="true" /></object>';
+          this.other ='<object id="qtboxMovie" type="video/quicktime" codebase="https://www.apple.com/qtactivex/qtplugin.cab" data="'+sLinkHref+'" width="'+this.options.contentsWidth+'" height="'+this.options.contentsHeight+'"><param name="src" value="'+sLinkHref+'" /><param name="scale" value="aspect" /><param name="controller" value="true" /><param name="autoplay" value="true" /><param name="bgcolor" value="#000000" /><param name="enablejavascript" value="true" /></object>';
       } else {
-        this.other = '<object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab" width="'+this.options.contentsWidth+'" height="'+this.options.contentsHeight+'" id="qtboxMovie"><param name="src" value="'+sLinkHref+'" /><param name="scale" value="aspect" /><param name="controller" value="true" /><param name="autoplay" value="true" /><param name="bgcolor" value="#000000" /><param name="enablejavascript" value="true" /></object>';
+        this.other = '<object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="https://www.apple.com/qtactivex/qtplugin.cab" width="'+this.options.contentsWidth+'" height="'+this.options.contentsHeight+'" id="qtboxMovie"><param name="src" value="'+sLinkHref+'" /><param name="scale" value="aspect" /><param name="controller" value="true" /><param name="autoplay" value="true" /><param name="bgcolor" value="#000000" /><param name="enablejavascript" value="true" /></object>';
       }
 		}
 		else if (sLinkHref.match(/\.wmv/i) || sLinkHref.match(/\.asx/i)) {
