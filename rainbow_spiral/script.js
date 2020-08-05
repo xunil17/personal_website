@@ -1,5 +1,5 @@
 
-var enable_interaction = false;
+var enable_interaction = true;
 
 var t = 0;
 var t_rate = 1;
@@ -7,7 +7,7 @@ var t_rate = 1;
 //animation settings
 var animation_speed = 30;
 var animation_rate = 1/10;
-var animation_switch = false;
+var animation_switch = true;
 var animation_direction = false;
 
 var lightness_base = 30;
@@ -16,7 +16,7 @@ var lightness_base = 30;
 var a = 1;
 var k = 0.44;
 var spacer = 110;
-var num_spirals = 20;
+var num_spirals = 1;
 var total_increments = 100;
 var exponential_size_factor = 1.3;
 
@@ -31,6 +31,48 @@ var ctx = canvas.getContext('2d');
 
 
 startAnimating(animation_speed);
+
+if(enable_interaction) {
+
+    
+
+    // canvas.addEventListener('keydown', e => {
+    // // get_mouse_pos = true;
+    // // getMousePosition(canvas, e)
+    // num_spirals = num_spirals + 1
+    // // check(canvas, e)
+    // });
+  
+    canvas.addEventListener('click', e => {
+    getMouseDown(canvas, e)
+    });
+
+    document.addEventListener('keydown', dokeydown, false );
+      
+    // canvas.addEventListener('mouseup', e => {
+    // get_mouse_pos = false;
+    // });
+  
+    // canvas.addEventListener('mousemove', function(e) {
+    //   if(get_mouse_pos) {
+    //     getMousePosition(canvas, e);
+    //   }
+    // })
+    
+    // canvas.addEventListener('touchstart', function(e) {
+    //     getTouchPosition(canvas,e);
+    //     event.preventDefault();
+    // }, false);
+      
+    // canvas.addEventListener('touchend', function(e) {
+ 
+    // }, false);
+      
+    // canvas.addEventListener('touchmove', function(e) {
+    //     getTouchPosition(canvas,e);
+    //     event.preventDefault();
+    // }, false);
+}
 
 
 function draw() {
@@ -49,6 +91,8 @@ function draw() {
     }
 
     t += t_rate;
+
+
  
 }
 
@@ -91,6 +135,42 @@ function drawSpiral(theta_offset, hue, t) {
     }
 }
 
+
+function dokeydown(e) {
+    num_spirals += 1;
+    // alert( e.keyCode );
+
+}
+
+// function getMousePosition(canvas, event) {
+//     x = (event.clientX/canvas.width - 0.5);
+//     y = 1*(event.clientY/canvas.height - 0.5);
+//     r = Math.sqrt(x*x+y*y) + 0.001;
+//     f = .5*r;
+//     f_base = 1-.75*r**2
+//     f_amp = 5*(1-r)**4 + .25*r**4;
+// }
+
+function check(canvas, e) {
+    num_spirals = num_spirals + 1;
+    // var code = e.keyCode;
+    // switch (code) {
+    //     case 37: alert("Left"); break; //Left key
+    //     case 38: alert("Up"); break; //Up key
+    //     case 39: alert("Right"); break; //Right key
+    //     case 40: alert("Down"); break; //Down key
+    //     default: alert(code); //Everything else
+    // }
+}
+
+function getMouseDown(canvas, event) {
+    num_spirals = num_spirals + 1;
+    // canvas.off();
+    canvas.removeEventListener('click',
+        getMouseDown,
+        false
+    );
+}
 
 function startAnimating(fps) {
     
