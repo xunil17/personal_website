@@ -7,7 +7,7 @@ var t_rate = 1;
 //animation settings
 var animation_speed = 30;
 var animation_rate = 1/10;
-var animation_switch = true;
+var animation_switch = false;
 var animation_direction = false;
 
 var lightness_base = 30;

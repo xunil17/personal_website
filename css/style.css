@@ -286,7 +286,12 @@ p {
 	}
 }
 
-#razyrice {
+#spiral_pic {
+	width: 64px;
+	height: 64px;
+}
+
+#eastereggs {
 	text-align: center;
 	margin-top: 4vh;
 }
