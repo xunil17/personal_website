@@ -32,8 +32,10 @@ var ctx = canvas.getContext('2d');
 
 startAnimating(animation_speed);
 
-if(enable_interaction) {
+var ticking = false;
 
+if(enable_interaction) {
+    // console.log(window.scrollY);
     
 
     // canvas.addEventListener('keydown', e => {
@@ -43,11 +45,42 @@ if(enable_interaction) {
     // // check(canvas, e)
     // });
   
-    canvas.addEventListener('click', e => {
-    getMouseDown(canvas, e)
-    });
+    // canvas.addEventListener('click', e => {
+    // getMouseDown(canvas, e)
+    // });
 
-    document.addEventListener('keydown', dokeydown, false );
+    // window.addEventListener('scroll', function(e) {
+    //     console.log(window.scrollY);
+    //   last_known_scroll_position = window.scrollY;
+
+    //   if (!ticking) {
+    //     window.requestAnimationFrame(function() {
+    //       changeSpirals(last_known_scroll_position);
+    //       ticking = false;
+    //     });
+
+    //     ticking = true;
+    //   }
+    // });
+
+    // document.addEventListener('keydown', dokeydown, false );
+
+     // document.addEventListener('wheel', dokeydown, false );
+    window.addEventListener('wheel', function(event)
+        {
+         if (event.deltaY < 0)
+         {
+          console.log('scrolling up');
+          num_spirals += 1;
+         }
+         else if (event.deltaY > 0)
+         {
+          console.log('scrolling down');
+          if (num_spirals >= 2) {
+            num_spirals -= 1;
+          }
+         }
+    });
       
     // canvas.addEventListener('mouseup', e => {
     // get_mouse_pos = false;
@@ -135,6 +168,11 @@ function drawSpiral(theta_offset, hue, t) {
     }
 }
 
+
+function changeSpirals(spirals) {
+    num_spirals = spirals;
+    console.log(spirals);
+}
 
 function dokeydown(e) {
     num_spirals += 1;
