@@ -34,48 +34,41 @@ startAnimating(animation_speed);
 
 var ticking = false;
 
+var mouse_setting = 'none';
+
 if(enable_interaction) {
 
-    // canvas.addEventListener('keydown', e => {
-    // // get_mouse_pos = true;
-    // // getMousePosition(canvas, e)
-    // num_spirals = num_spirals + 1
-    // // check(canvas, e)
-    // });
-  
-    // canvas.addEventListener('click', e => {
-    // getMouseDown(canvas, e)
-    // });
+    document.addEventListener('keydown', keyDownFunction, false );
 
-
-    // document.addEventListener('keydown', dokeydown, false );
-
-     // document.addEventListener('wheel', dokeydown, false );
     window.addEventListener('wheel', function(event)
         {
-         if (event.deltaY < 0)
-         {
-          console.log('scrolling up');
-          num_spirals += 1;
-         }
-         else if (event.deltaY > 0)
-         {
-          console.log('scrolling down');
-          if (num_spirals >= 2) {
-            num_spirals -= 1;
-          }
-         }
+        if (event.deltaY < 0) {
+            // console.log('scrolling up');
+            num_spirals += 1;
+        } else if (event.deltaY > 0) {
+            // console.log('scrolling down');
+
+            if (num_spirals >= 2) {
+                num_spirals -= 1;
+            }
+        }
     });
       
-    // canvas.addEventListener('mouseup', e => {
-    // get_mouse_pos = false;
-    // });
-  
-    // canvas.addEventListener('mousemove', function(e) {
-    //   if(get_mouse_pos) {
-    //     getMousePosition(canvas, e);
-    //   }
-    // })
+ 
+    canvas.addEventListener('mousedown', e => {
+    get_mouse_pos = true;
+    getMousePosition(canvas, e)
+    });
+      
+    canvas.addEventListener('mouseup', e => {
+    get_mouse_pos = false;
+    });
+
+    canvas.addEventListener('mousemove', function(e) {
+      if(get_mouse_pos) {
+        getMousePosition(canvas, e)
+      }
+    })
     
     canvas.addEventListener('touchstart', function(e) {
         getTouchPosition(canvas,e);
@@ -154,51 +147,45 @@ function drawSpiral(theta_offset, hue, t) {
 }
 
 
+
 function getTouchPosition(canvas, e) {
     num_spirals += 1;
 }
 
-
-function changeSpirals(spirals) {
-    num_spirals = spirals;
-    console.log(spirals);
+function keyDownFunction(e) {
+    console.log(e.code);
+    switch(e.code) {
+        case 'Digit1':  bendyActivated(); break;
+        case 'Space' : animation_direction = !animation_direction; break;
+    }
 }
 
-function dokeydown(e) {
-    num_spirals += 1;
-    // alert( e.keyCode );
-
+function bendyActivated() {
+    alert('Bendy Activated (click and drag mouse)');
+    mouse_setting = 'bendy';
 }
 
-// function getMousePosition(canvas, event) {
-//     x = (event.clientX/canvas.width - 0.5);
-//     y = 1*(event.clientY/canvas.height - 0.5);
-//     r = Math.sqrt(x*x+y*y) + 0.001;
-//     f = .5*r;
-//     f_base = 1-.75*r**2
-//     f_amp = 5*(1-r)**4 + .25*r**4;
-// }
 
-function check(canvas, e) {
-    num_spirals = num_spirals + 1;
-    // var code = e.keyCode;
-    // switch (code) {
-    //     case 37: alert("Left"); break; //Left key
-    //     case 38: alert("Up"); break; //Up key
-    //     case 39: alert("Right"); break; //Right key
-    //     case 40: alert("Down"); break; //Down key
-    //     default: alert(code); //Everything else
-    // }
+function getMousePosition(canvas, event) {
+
+    x = (event.clientX/canvas.width - 0.5);
+    y = (event.clientY/canvas.height - 0.5);
+    // console.log(mouse_setting);
+    switch(mouse_setting) {
+        case 'bendy': changeSpiralBendy(x,y); break;
+    }
+
+    // r = Math.sqrt(x*x+y*y) + 0.001;
+    // f = .5*r;
+    // f_base = 1-.75*r**2
+    // f_amp = 5*(1-r)**4 + .25*r**4;
 }
 
-function getMouseDown(canvas, event) {
-    num_spirals = num_spirals + 1;
-    // canvas.off();
-    canvas.removeEventListener('click',
-        getMouseDown,
-        false
-    );
+function changeSpiralBendy(x,y) {
+    // console.log(x);
+    k = 0.44 + x/0.5;
 }
+
 
 function startAnimating(fps) {
     
