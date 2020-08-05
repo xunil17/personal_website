@@ -8,7 +8,7 @@ var t_rate = 1;
 var animation_speed = 30;
 var animation_rate = 1/10;
 var animation_switch = true;
-var animation_direction = false;
+var animation_direction = true;
 
 var lightness_base = 30;
 
@@ -16,7 +16,7 @@ var lightness_base = 30;
 var a = 1;
 var k = 0.44;
 var spacer = 110;
-var num_spirals = 1;
+var num_spirals = 4;
 var total_increments = 100;
 var exponential_size_factor = 1.3;
 
@@ -35,8 +35,6 @@ startAnimating(animation_speed);
 var ticking = false;
 
 if(enable_interaction) {
-    // console.log(window.scrollY);
-    
 
     // canvas.addEventListener('keydown', e => {
     // // get_mouse_pos = true;
@@ -49,19 +47,6 @@ if(enable_interaction) {
     // getMouseDown(canvas, e)
     // });
 
-    // window.addEventListener('scroll', function(e) {
-    //     console.log(window.scrollY);
-    //   last_known_scroll_position = window.scrollY;
-
-    //   if (!ticking) {
-    //     window.requestAnimationFrame(function() {
-    //       changeSpirals(last_known_scroll_position);
-    //       ticking = false;
-    //     });
-
-    //     ticking = true;
-    //   }
-    // });
 
     // document.addEventListener('keydown', dokeydown, false );
 
@@ -92,10 +77,10 @@ if(enable_interaction) {
     //   }
     // })
     
-    // canvas.addEventListener('touchstart', function(e) {
-    //     getTouchPosition(canvas,e);
-    //     event.preventDefault();
-    // }, false);
+    canvas.addEventListener('touchstart', function(e) {
+        getTouchPosition(canvas,e);
+        event.preventDefault();
+    }, false);
       
     // canvas.addEventListener('touchend', function(e) {
  
@@ -166,6 +151,11 @@ function drawSpiral(theta_offset, hue, t) {
         0, 2*Math.PI)
         ctx.fill()
     }
+}
+
+
+function getTouchPosition(canvas, e) {
+    num_spirals += 1;
 }
 
 
