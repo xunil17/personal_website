@@ -5,18 +5,19 @@ var t = 0;
 var t_rate = 1;
 
 //animation settings
-var animation_speed = 30;
-var animation_rate = 1/10;
+var animation_speed = 30; 
+var animation_rate = 0.1;
 var animation_switch = true;
 var animation_direction = true;
 
 var lightness_base = 30;
 
 //spiral settings
-var a = 1;
-var k = 0.44;
-var spacer = 110;
-var num_spirals = 4;
+
+var num_spirals = 4; //scroll wheel
+var a = 1; // keyboard 1
+var k = 0.44; //keyboard 1
+var spacer = 110; //
 var total_increments = 100;
 var exponential_size_factor = 1.3;
 
@@ -109,7 +110,7 @@ function draw() {
 
 function drawSpiral(theta_offset, hue, t) {
     let theta_low_range =  -3*Math.PI;
-    let theta_high_range = 3*Math.PI;
+    let theta_high_range = 1.5*Math.PI;
     
     let increments = Math.abs(theta_high_range - theta_low_range) / total_increments;
 
@@ -155,14 +156,21 @@ function getTouchPosition(canvas, e) {
 function keyDownFunction(e) {
     console.log(e.code);
     switch(e.code) {
-        case 'Digit1':  bendyActivated(); break;
+        
         case 'Space' : animation_direction = !animation_direction; break;
+        case 'Digit1':  bendyActivated(); break;
+        case 'Digit3':  animationActivated(); break;
     }
 }
 
 function bendyActivated() {
-    alert('Bendy Activated (click and drag mouse)');
+    alert('Bendy Activated (click and/or drag mouse)');
     mouse_setting = 'bendy';
+}
+
+function animationActivated() {
+    alert('Animation Speeds Activated (click and/or drag mouse)');
+    mouse_setting = 'animation';
 }
 
 
@@ -173,6 +181,7 @@ function getMousePosition(canvas, event) {
     // console.log(mouse_setting);
     switch(mouse_setting) {
         case 'bendy': changeSpiralBendy(x,y); break;
+        case 'animation': changeAnimation(x,y); break;
     }
 
     // r = Math.sqrt(x*x+y*y) + 0.001;
@@ -184,6 +193,17 @@ function getMousePosition(canvas, event) {
 function changeSpiralBendy(x,y) {
     // console.log(x);
     k = 0.44 + x/0.5;
+    a = (y+1) * 10;
+}
+
+function changeAnimation(x,y) {
+    
+    // animation_speed = 30 + y*60;
+    animation_rate = (x+0.5)*3;
+    // console.log(animation_speed);
+    console.log(animation_rate);
+
+    // startAnimating(animation_speed);
 }
 
 
