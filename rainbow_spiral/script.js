@@ -5,8 +5,8 @@ var t = 0;
 var t_rate = 1;
 
 //animation settings
-var animation_speed = 30; 
-var animation_rate = 0.1;
+var animation_speed = 30; //can't change
+var animation_rate = 0.1; // keyboard 3
 var animation_switch = true;
 var animation_direction = true;
 
@@ -17,8 +17,8 @@ var lightness_base = 30;
 var num_spirals = 4; //scroll wheel
 var a = 1; // keyboard 1
 var k = 0.44; //keyboard 1
-var spacer = 110; //
-var total_increments = 100;
+var spacer = 110; //keyboard 2
+var total_increments = 100; //keyboard 2
 var exponential_size_factor = 1.3;
 
 var stop_animation = false;
@@ -159,17 +159,25 @@ function keyDownFunction(e) {
         
         case 'Space' : animation_direction = !animation_direction; break;
         case 'Digit1':  bendyActivated(); break;
+        case 'Digit2':  spacingActivated(); break;
         case 'Digit3':  animationActivated(); break;
     }
 }
 
+
+
 function bendyActivated() {
-    alert('Bendy Activated (click and/or drag mouse)');
+    alert('Bendy Activated (click and/or drag mouse) \n x-axis: curvature \n y-axis: zoom');
     mouse_setting = 'bendy';
 }
 
+function spacingActivated() {
+    alert('Spacing Activated (click and/or drag mouse) \n x-axis: circle size \n y-axis: circle increments');
+    mouse_setting = 'spacing';
+}
+
 function animationActivated() {
-    alert('Animation Speeds Activated (click and/or drag mouse)');
+    alert('Animation Speeds Activated (click and/or drag mouse) \n x-axis: animation rate');
     mouse_setting = 'animation';
 }
 
@@ -181,6 +189,7 @@ function getMousePosition(canvas, event) {
     // console.log(mouse_setting);
     switch(mouse_setting) {
         case 'bendy': changeSpiralBendy(x,y); break;
+        case 'spacing': changeSpiralSpacing(x,y); break;
         case 'animation': changeAnimation(x,y); break;
     }
 
@@ -193,15 +202,21 @@ function getMousePosition(canvas, event) {
 function changeSpiralBendy(x,y) {
     // console.log(x);
     k = 0.44 + x/0.5;
-    a = (y+1) * 10;
+    a = (y+1) * 20;
+}
+
+function changeSpiralSpacing(x,y) {
+    spacer = 110 - x*100;
+    total_increments = 100 + y*100;
 }
 
 function changeAnimation(x,y) {
     
     // animation_speed = 30 + y*60;
-    animation_rate = (x+0.5)*3;
+    // animation_rate = (x+0.5)*3;
+    animation_rate = Math.abs(x)*3;
     // console.log(animation_speed);
-    console.log(animation_rate);
+    // console.log(animation_rate);
 
     // startAnimating(animation_speed);
 }
