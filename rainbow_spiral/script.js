@@ -30,6 +30,8 @@ var get_touch_pos = false;
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
+var audio = new Audio();
+audio.src = "look_at_the_sky.mp3"; // the source path
 
 startAnimating(animation_speed);
 
@@ -251,16 +253,22 @@ function startAnimating(fps) {
  }
 
  function playAudio() {
-    audio = new Audio();
+    if (!audio.paused) {
+        audio.pause()
+    } else {
+        audio.crossOrigin = "anonymous";
+        audio.play();
+    }
 
+}
+
+function analyzeAudio() {
     context = new (window.AudioContext || window.webkitAudioContext)();
     analyser = context.createAnalyser();
 
-    audio.src = "look_at_the_sky.mp3"; // the source path
+    
     source = context.createMediaElementSource(audio);
     source.connect(analyser);
     analyser.connect(context.destination);
     frequency_array = new Uint8Array(analyser.frequencyBinCount);
-    audio.crossOrigin = "anonymous";
-    audio.play();
 }

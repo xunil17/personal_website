@@ -4,13 +4,11 @@ frequency_array;
 bars = 200;
 bar_width = 2;
 
-var canvas = document.getElementById("renderer");
 
-canvas.addEventListener('mousedown', e => {
-playAudio(canvas, e)
-});
 
-function playAudio(canvas, e) {
+var audioPlayed = false;
+
+function playAudio() {
 	audio = new Audio();
 	context = new (window.AudioContext || window.webkitAudioContext)();
 	analyser = context.createAnalyser();
@@ -25,8 +23,19 @@ function playAudio(canvas, e) {
 
 function initPage(){
 
+	canvas = document.getElementById("renderer");
 
+	
 
+	canvas.addEventListener('mousedown', e => {
+	playAudio();
+	audioPlayed = true;
+	});
+	// playAudio();
+
+	
+
+	
 	animationLooper();
 }
 
@@ -51,20 +60,24 @@ function animationLooper(){
 	ctx.beginPath();
 	ctx.arc(center_x,center_y,radius,0,2*Math.PI);
 	ctx.stroke();
-	analyser.getByteFrequencyData(frequency_array);
 
-	for(var i = 0; i < bars; i++){
-		//divide a circle into equal parts
-		rads = Math.PI * 2 / bars;
-		bar_height = frequency_array[i]*0.7;
-		// set coordinates
-		x = center_x + Math.cos(rads * i) * (radius);
-		y = center_y + Math.sin(rads * i) * (radius);
-		x_end = center_x + Math.cos(rads * i)*(radius + bar_height);
-		y_end = center_y + Math.sin(rads * i)*(radius + bar_height);
-		//draw a bar
-		drawBar(x, y, x_end, y_end, bar_width,frequency_array[i]);
+	if (audioPlayed) {
+		analyser.getByteFrequencyData(frequency_array);
+
+		for(var i = 0; i < bars; i++){
+			//divide a circle into equal parts
+			rads = Math.PI * 2 / bars;
+			bar_height = frequency_array[i]*0.7;
+			// set coordinates
+			x = center_x + Math.cos(rads * i) * (radius);
+			y = center_y + Math.sin(rads * i) * (radius);
+			x_end = center_x + Math.cos(rads * i)*(radius + bar_height);
+			y_end = center_y + Math.sin(rads * i)*(radius + bar_height);
+			//draw a bar
+			drawBar(x, y, x_end, y_end, bar_width,frequency_array[i]);
+		}
 	}
+
 
 	window.requestAnimationFrame(animationLooper);
 }
