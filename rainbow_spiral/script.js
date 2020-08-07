@@ -161,6 +161,7 @@ function keyDownFunction(e) {
         case 'Digit1':  bendyActivated(); break;
         case 'Digit2':  spacingActivated(); break;
         case 'Digit3':  animationActivated(); break;
+        case 'Digit4': playAudio(); break;
     }
 }
 
@@ -248,3 +249,18 @@ function startAnimating(fps) {
          draw();  
      }
  }
+
+ function playAudio() {
+    audio = new Audio();
+
+    context = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = context.createAnalyser();
+
+    audio.src = "look_at_the_sky.mp3"; // the source path
+    source = context.createMediaElementSource(audio);
+    source.connect(analyser);
+    analyser.connect(context.destination);
+    frequency_array = new Uint8Array(analyser.frequencyBinCount);
+    audio.crossOrigin = "anonymous";
+    audio.play();
+}
