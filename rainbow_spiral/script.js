@@ -13,7 +13,6 @@ var animation_direction = true;
 var lightness_base = 30;
 
 //spiral settings
-
 var num_spirals = 4; //scroll wheel
 var a = 1; // keyboard 1
 var k = 0.44; //keyboard 1
@@ -27,11 +26,16 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 var get_mouse_pos = false;
 var get_touch_pos = false;
 
+var circle_buffer = 30;
+
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
 var audio = new Audio();
 audio.src = "look_at_the_sky.mp3"; // the source path
+
+var first_time_playing = true;
+var frequency_array;
 
 startAnimating(animation_speed);
 
@@ -139,12 +143,22 @@ function drawSpiral(theta_offset, hue, t) {
         }
         
 
+        let x_coordinate = W/2 + spacer*x;
+        let y_coordinate = H/2 + spacer*y;
+        let circle_size = 8*r**exponential_size_factor;
         ctx.beginPath();
         ctx.fillStyle = `hsl(${hue}, 80%, ${lightness}%)`;
-        ctx.arc(W/2 + spacer*x,
-                H/2 + spacer*y,
-                8*r**exponential_size_factor,
+
+
+        if (x_coordinate <= W + circle_buffer && x_coordinate >= -circle_buffer && y_coordinate >= -circle_buffer && y_coordinate <= H + circle_buffer) {
+                    ctx.arc(x_coordinate,
+                y_coordinate,
+                circle_size,
         0, 2*Math.PI)
+        }
+        
+        
+
         ctx.fill()
     }
 }
@@ -256,19 +270,22 @@ function startAnimating(fps) {
     if (!audio.paused) {
         audio.pause()
     } else {
+        if (first_time_playing) {
+            context = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = context.createAnalyser();
+            source = context.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(context.destination);
+            frequency_array = new Uint8Array(analyser.frequencyBinCount);
+            first_time_playing = false;
+        }
         audio.crossOrigin = "anonymous";
         audio.play();
     }
 
 }
 
-function analyzeAudio() {
-    context = new (window.AudioContext || window.webkitAudioContext)();
-    analyser = context.createAnalyser();
-
+function analyzeAudio() {    
     
-    source = context.createMediaElementSource(audio);
-    source.connect(analyser);
-    analyser.connect(context.destination);
-    frequency_array = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(frequency_array);
 }
