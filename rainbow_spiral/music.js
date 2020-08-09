@@ -6,6 +6,8 @@ var vocal_audio = new Audio();
 
 audio.src = "look_at_the_sky.mp3"; // the source path
 
+// audio.src = "stems/drums.mp3";
+
 other_audio.src = "stems/other.mp3";
 bass_audio.src = "stems/bass.mp3";
 drum_audio.src = "stems/drums.mp3";
@@ -14,18 +16,20 @@ vocal_audio.src = "stems/vocals.mp3"
 
 var first_time_playing = true;
 var frequency_array;
-var audio_level = 0;
+
 
  function playAudio() {
     if (!audio.paused) {
         // drum_audio.pause();
         audio.pause();
+        drum_audio.pause();
+        audio_level = 0;
         // pause_all_audio();
     } else {
         if (first_time_playing) {
             context = new (window.AudioContext || window.webkitAudioContext)();
             analyser = context.createAnalyser();
-            source = context.createMediaElementSource(audio);
+            source = context.createMediaElementSource(drum_audio);
             source.connect(analyser);
             analyser.connect(context.destination);
             frequency_array = new Uint8Array(analyser.frequencyBinCount);
@@ -33,9 +37,11 @@ var audio_level = 0;
             // drum_audio.currentTime = 18;
         }
         // audio.crossOrigin = "anonymous";
-        // drum_audio.play();
+        drum_audio.play();
+        drum_audio.volume = 0.1;
         // drum_audio.muted = true;
         audio.play();
+        
         // play_all_audio();
         // console.log(analyser.frequencyBinCount);
         
@@ -54,8 +60,13 @@ function analyzeAudio() {
         max = Math.max(max, a);
     }
 
-    audio_level /= array.length;
+    // audio_level /= array.length;
+    audio_level = (audio_level / array.length);
 
+
+    console.log(audio_level);
+
+    k = audio_level/2;
 
 
     // k = 
@@ -63,7 +74,7 @@ function analyzeAudio() {
 
 
     // lightness = 0;
-    lightness = audio_level * 3;
+    // lightness = lightness + audio_level * 4;
     // console.log(lightness);
 
     // analyser.getByteFrequencyData(frequency_array);

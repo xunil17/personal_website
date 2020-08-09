@@ -1,13 +1,15 @@
 
 var enable_interaction = true;
 
+var audio_level = 0;
+
 var t = 0;
 var t_rate = 1;
 
 //animation settings
 var animation_speed = 30; //can't change
 var animation_rate = 0.1; // keyboard 3
-var animation_switch = false;
+var animation_switch = true;
 var animation_direction = true;
 
 var lightness_base = 30;
@@ -261,7 +263,7 @@ function startAnimating(fps) {
          then = now - (elapsed % fpsInterval);
      
          draw();  
-         if (!audio.paused) {
+         if (!drum_audio.paused) {
             analyzeAudio();
          }
          
