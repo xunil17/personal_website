@@ -7,10 +7,11 @@ var t_rate = 1;
 //animation settings
 var animation_speed = 30; //can't change
 var animation_rate = 0.1; // keyboard 3
-var animation_switch = true;
+var animation_switch = false;
 var animation_direction = true;
 
 var lightness_base = 30;
+var lightness = 0;
 
 //spiral settings
 var num_spirals = 4; //scroll wheel
@@ -31,11 +32,7 @@ var circle_buffer = 30;
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-var audio = new Audio();
-audio.src = "look_at_the_sky.mp3"; // the source path
-
-var first_time_playing = true;
-var frequency_array;
+var saturation = 80;
 
 startAnimating(animation_speed);
 
@@ -138,16 +135,17 @@ function drawSpiral(theta_offset, hue, t) {
                 lightness = 30*Math.cos(animation_rate*(t-j+10)) + lightness_base;
             }
             
-        } else {
-            lightness = lightness_base * 2;
-        }
+        } 
+        // else {
+        //     lightness = lightness_base * 2;
+        // }
         
 
         let x_coordinate = W/2 + spacer*x;
         let y_coordinate = H/2 + spacer*y;
         let circle_size = 8*r**exponential_size_factor;
         ctx.beginPath();
-        ctx.fillStyle = `hsl(${hue}, 80%, ${lightness}%)`;
+        ctx.fillStyle = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 
 
         if (x_coordinate <= W + circle_buffer && x_coordinate >= -circle_buffer && y_coordinate >= -circle_buffer && y_coordinate <= H + circle_buffer) {
@@ -177,7 +175,7 @@ function keyDownFunction(e) {
         case 'Digit1':  bendyActivated(); break;
         case 'Digit2':  spacingActivated(); break;
         case 'Digit3':  animationActivated(); break;
-        case 'Digit4': playAudio(); break;
+        case 'Digit4':  playAudio(); break;
     }
 }
 
@@ -263,29 +261,10 @@ function startAnimating(fps) {
          then = now - (elapsed % fpsInterval);
      
          draw();  
+         if (!audio.paused) {
+            analyzeAudio();
+         }
+         
      }
  }
 
- function playAudio() {
-    if (!audio.paused) {
-        audio.pause()
-    } else {
-        if (first_time_playing) {
-            context = new (window.AudioContext || window.webkitAudioContext)();
-            analyser = context.createAnalyser();
-            source = context.createMediaElementSource(audio);
-            source.connect(analyser);
-            analyser.connect(context.destination);
-            frequency_array = new Uint8Array(analyser.frequencyBinCount);
-            first_time_playing = false;
-        }
-        audio.crossOrigin = "anonymous";
-        audio.play();
-    }
-
-}
-
-function analyzeAudio() {    
-    
-    analyser.getByteFrequencyData(frequency_array);
-}
