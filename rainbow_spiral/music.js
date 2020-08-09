@@ -66,7 +66,7 @@ function analyzeAudio() {
 
     console.log(audio_level);
 
-    k = audio_level/2;
+    k = 0.1 + audio_level/16;
 
 
     // k = 

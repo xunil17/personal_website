@@ -115,7 +115,7 @@ function draw() {
 
 function drawSpiral(theta_offset, hue, t) {
     let theta_low_range =  -3*Math.PI;
-    let theta_high_range = 1.5*Math.PI;
+    let theta_high_range = 3*Math.PI;
     
     let increments = Math.abs(theta_high_range - theta_low_range) / total_increments;
 
