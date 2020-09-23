@@ -61,12 +61,13 @@ function analyzeAudio() {
     }
 
     // audio_level /= array.length;
-    audio_level = (audio_level / array.length);
+    // audio_level = (audio_level / array.length);
 
 
-    console.log(audio_level);
+    // console.log(audio_level);
 
     k = 0.1 + audio_level/16;
+    // console.log(audio_level);
 
 
     // k = 
