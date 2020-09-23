@@ -43,7 +43,9 @@ p {
 #slide1, #slide2{ width: 100%; }
 
 #slide1{
-	background:url('../img/robot.png') 50% 0 no-repeat fixed;
+	position:relative;
+	z-index: 1;
+	background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../img/piano_1.jpg");
 	color: #fff;
 	height: 100vh;
 	margin: 0;
@@ -51,10 +53,22 @@ p {
 	position: relative;
 }
 
+
 #intro {
 	padding-top: 40vh;
 	width: 50%;
   	margin: 0 auto;
+}
+
+
+#opener {
+	font-family:"Arvo";
+	font-weight: normal;
+	font-size: 5vh;
+	text-align: center;
+	color: black;
+	margin: 0;
+	padding: 0;;
 }
 
 #scroll_prompt{
