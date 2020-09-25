@@ -46,6 +46,9 @@ p {
 	position:relative;
 	z-index: 1;
 	background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../img/piano_1.jpg");
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-position: center; 
 	color: #fff;
 	height: 100vh;
 	margin: 0;
